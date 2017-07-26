@@ -358,7 +358,11 @@ class ProxyRequestHandler(BaseHTTPRequestHandler):
                 print with_color(32, "==== RESPONSE BODY ====\n%s\n" % res_body_text)
 
     def request_handler(self, req, req_body):
-        pass
+        print '[c2] req_path: ' + req.path
+        req.path = req.path.replace('[c2]', '')
+        if req_body:
+            print '[c2] req_body: ' + req_body
+            return req_body.replace('[c2]', '')
 
     def response_handler(self, req, req_body, res, res_body):
         pass
